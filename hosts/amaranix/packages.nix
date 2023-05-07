@@ -31,6 +31,8 @@ let
 
       # Nodejs
       nodejs
+      nodePackages_latest.typescript-language-server
+      nodePackages_latest.typescript
 
       # Go
       go
