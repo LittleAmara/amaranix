@@ -124,6 +124,7 @@
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
   };
+  programs.command-not-found.enable = false;
 
   # Fonts
   fonts.fonts = with pkgs; [
