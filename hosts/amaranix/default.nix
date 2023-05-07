@@ -7,7 +7,7 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
+  # Bootloader
   boot = {
     initrd.secrets = { "/crypto_keyfile.bin" = null; }; # Setup keyfile
     loader = {
@@ -48,6 +48,7 @@
     };
   };
 
+  # Xserver configuration
   services.xserver = {
     enable = true;
     desktopManager = {
@@ -109,7 +110,6 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
-
   # Packages
   environment = {
     systemPackages = import ./packages.nix { inherit pkgs; };
@@ -117,7 +117,7 @@
   };
   nixpkgs.config.allowUnfree = true;
 
-  # Enable flakes
+  # Nix configuration
   nix = {
     package = pkgs.nixVersions.nix_2_15;
     settings.experimental-features = [ "nix-command" "flakes" ];
@@ -125,6 +125,7 @@
     nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
   };
 
+  # Fonts
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     fira-code-symbols
