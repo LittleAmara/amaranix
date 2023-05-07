@@ -9,11 +9,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@args:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
-      inherit (nixpkgs) lib;
-
       system = "x86_64-linux";
+
+      inherit (nixpkgs) lib;
 
       pkgs = import nixpkgs {
         inherit system;
@@ -21,7 +21,6 @@
       };
     in
     {
-      nixosConfigurations = import ./hosts { inherit lib pkgs system; };
-      packages = {nix = pkgs.nixVersions.nix_2_15;};
+      nixosConfigurations = import ./hosts { inherit inputs lib pkgs system; };
     };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports =
@@ -111,11 +111,19 @@
 
 
   # Packages
-  environment.systemPackages = import ./packages.nix { inherit pkgs; };
+  environment = {
+    systemPackages = import ./packages.nix { inherit pkgs; };
+    etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
+  };
   nixpkgs.config.allowUnfree = true;
 
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    package = pkgs.nixVersions.nix_2_15;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
+  };
 
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })

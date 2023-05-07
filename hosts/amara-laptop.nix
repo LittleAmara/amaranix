@@ -1,7 +1,7 @@
-{system, lib, pkgs, ...}:
+{ inputs, system, lib, pkgs, ... }:
 
 lib.nixosSystem {
-  inherit system pkgs;
+  specialArgs = { inherit inputs system pkgs; };
 
   modules = [
     ./amaranix
