@@ -16,6 +16,7 @@ let
 
       # C / C++
       gnumake
+      bear
       gcc
       clang-tools
       cmake
@@ -46,6 +47,10 @@ let
       git
       docker-compose
       pre-commit
+      virt-manager
+      qemu
+      virtiofsd
+      postgresql
     ];
 
   terminal_utils = with pkgs; [

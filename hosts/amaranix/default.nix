@@ -107,7 +107,7 @@
   users.users.amara = {
     isNormalUser = true;
     description = "amara";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
   };
 
   # Packages
@@ -135,6 +135,8 @@
     font-awesome
   ];
 
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
   system.autoUpgrade.enable = false;
   system.stateVersion = "22.05";
 }
