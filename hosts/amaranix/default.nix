@@ -114,6 +114,7 @@
   environment = {
     systemPackages = import ./packages.nix { inherit pkgs; };
     etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
+    pathsToLink = [ "/share" ]; # needed by postgresql
   };
   nixpkgs.config.allowUnfree = true;
 
