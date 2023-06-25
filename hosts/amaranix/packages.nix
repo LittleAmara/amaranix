@@ -43,6 +43,9 @@ let
       nixpkgs-fmt
       nil
 
+      # Rust
+      rustup
+
       # Others
       git
       docker-compose
@@ -71,6 +74,8 @@ let
       variant = "frappe";
       tweaks = [ "rimless" ];
     })
+    tmux
+    xsel
   ];
 
   desktop = with pkgs; [
@@ -84,6 +89,7 @@ let
     slack
     discord
     spotify
+    zathura
   ];
 in
 dev ++ terminal_utils ++ desktop
