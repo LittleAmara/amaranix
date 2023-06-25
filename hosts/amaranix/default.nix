@@ -49,34 +49,34 @@
   };
 
   # Xserver configuration
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableScreensaver = false;
-        enableXfwm = false;
-      };
-    };
-    displayManager = {
-      defaultSession = "xfce+i3";
-      autoLogin = {
-        enable = true;
-        user = "amara";
-      };
+  # services.xserver = {
+  #   enable = true;
+  #   desktopManager = {
+  #     xfce = {
+  #       enable = true;
+  #       noDesktop = true;
+  #       enableScreensaver = false;
+  #       enableXfwm = false;
+  #     };
+  #   };
+  #   displayManager = {
+  #     defaultSession = "xfce+i3";
+  #     autoLogin = {
+  #       enable = true;
+  #       user = "amara";
+  #     };
 
-    };
-    windowManager.i3 = {
-      package = pkgs.i3-gaps;
-      enable = true;
-    };
-  };
+  #   };
+  #   windowManager.i3 = {
+  #     package = pkgs.i3-gaps;
+  #     enable = true;
+  #   };
+  # };
 
-  services.xserver.videoDrivers = [ "modesetting" ];
-  services.xserver.deviceSection = ''
-    Option "TearFree" "true"
-  '';
+  # services.xserver.videoDrivers = [ "modesetting" ];
+  # services.xserver.deviceSection = ''
+  #   Option "TearFree" "true"
+  # '';
   hardware.opengl.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
