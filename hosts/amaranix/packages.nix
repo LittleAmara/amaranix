@@ -46,6 +46,13 @@ let
       # Rust
       rustup
 
+      # Hyprland
+      swww
+      waybar
+      wofi
+      pipewire
+      wireplumber
+
       # Others
       git
       docker-compose

@@ -7,9 +7,15 @@
       repo = "nixpkgs";
       ref = "master";
     };
+    hyprland = {
+      type = "github";
+      owner = "hyprwm";
+      repo = "Hyprland";
+      ref = "main";
+    };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
 
