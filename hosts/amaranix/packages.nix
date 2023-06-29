@@ -47,11 +47,18 @@ let
       rustup
 
       # Hyprland
+      networkmanagerapplet
+      dunst
       swww
-      waybar
       wofi
       pipewire
       wireplumber
+      brightnessctl
+      swaylock
+      (waybar.overrideAttrs
+        (oldAttrs: {
+          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+        }))
 
       # Others
       git
