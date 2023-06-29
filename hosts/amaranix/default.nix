@@ -107,7 +107,7 @@
   users.users.amara = {
     isNormalUser = true;
     description = "amara";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "video" ];
   };
 
   # Packages
@@ -139,6 +139,13 @@
     fira-code
     font-awesome
   ];
+
+  security.pam.services.swaylock =
+    {
+      text = ''
+        auth include login
+      '';
+    };
 
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
