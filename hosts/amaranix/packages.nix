@@ -47,7 +47,12 @@ let
       rustup
 
       # Hyprland
+      xdg-utils
+      grim
+      slurp
+      wl-clipboard
       networkmanagerapplet
+      catppuccin-cursors
       dunst
       swww
       wofi
