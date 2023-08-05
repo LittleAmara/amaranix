@@ -132,7 +132,7 @@
   programs.command-not-found.enable = false;
 
   # Fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     fira-code-symbols
     fira
