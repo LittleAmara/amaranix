@@ -89,7 +89,7 @@ let
     betterlockscreen
     jq
     (catppuccin-gtk.override {
-      accents = [ "flamingo" "green" "lavender" "mauve" "peach" "pink" "rosewater" "sky" "teal" ];
+      accents = [ "lavender" ];
       variant = "frappe";
       tweaks = [ "rimless" ];
     })
