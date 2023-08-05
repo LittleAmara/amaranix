@@ -99,9 +99,6 @@ let
 
   desktop = with pkgs; [
     rofi
-    nitrogen
-    picom
-    polybarFull
     firefox
     thunderbird
     kitty
