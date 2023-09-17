@@ -73,12 +73,27 @@
   #   };
   # };
 
-  # services.xserver.videoDrivers = [ "modesetting" ];
+  services.xserver.videoDrivers = [ "modesetting" "nvidia"];
   # services.xserver.deviceSection = ''
   #   Option "TearFree" "true"
   # '';
   hardware.opengl.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    modesetting.enable = true;
+    nvidiaSettings = true;
+  };
+
+  hardware.nvidia.prime = {
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+
+    # Make sure to use the correct Bus ID values for your system!
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:2:0:0";
+  };
 
   virtualisation.docker.enable = true;
 
@@ -117,6 +132,7 @@
     pathsToLink = [ "/share" ]; # needed by postgresql
   };
   nixpkgs.config.allowUnfree = true;
+  programs.zsh.enable = true; # enable zsh with completion
 
   # Nix configuration
   nix = {
