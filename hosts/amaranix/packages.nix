@@ -46,8 +46,14 @@ let
       # Rust
       rustup
 
+      # Lua
+      lua-language-server
+
       # Hyprland
+      pavucontrol
       xdg-utils
+      zip
+      unzip
       grim
       slurp
       wl-clipboard
@@ -86,7 +92,6 @@ let
     fd
     fzf
     zoxide
-    betterlockscreen
     jq
     (catppuccin-gtk.override {
       accents = [ "lavender" ];
