@@ -48,43 +48,13 @@
     };
   };
 
-  # Xserver configuration
-  # services.xserver = {
-  #   enable = true;
-  #   desktopManager = {
-  #     xfce = {
-  #       enable = true;
-  #       noDesktop = true;
-  #       enableScreensaver = false;
-  #       enableXfwm = false;
-  #     };
-  #   };
-  #   displayManager = {
-  #     defaultSession = "xfce+i3";
-  #     autoLogin = {
-  #       enable = true;
-  #       user = "amara";
-  #     };
-
-  #   };
-  #   windowManager.i3 = {
-  #     package = pkgs.i3-gaps;
-  #     enable = true;
-  #   };
-  # };
-
   services.xserver.videoDrivers = [ "modesetting" "nvidia"];
-  # services.xserver.deviceSection = ''
-  #   Option "TearFree" "true"
-  # '';
   hardware.opengl.enable = true;
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
     nvidiaSettings = true;
   };
-
-  virtualisation.docker.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -121,7 +91,7 @@
     pathsToLink = [ "/share" ]; # needed by postgresql
   };
   nixpkgs.config.allowUnfree = true;
-  programs.zsh.enable = true; # enable zsh with completion
+  programs.fish.enable = true; # enable fish with completion
 
   # Nix configuration
   nix = {
@@ -153,6 +123,8 @@
     };
 
   virtualisation.libvirtd.enable = true;
+  virtualisation.docker.enable = true;
+
   programs.dconf.enable = true;
   system.autoUpgrade.enable = false;
   system.stateVersion = "22.05";

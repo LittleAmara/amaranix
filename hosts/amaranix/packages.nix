@@ -30,11 +30,6 @@ let
       jetbrains.idea-ultimate
       maven
 
-      # Nodejs
-      nodejs
-      nodePackages_latest.typescript-language-server
-      nodePackages_latest.typescript
-
       # Go
       go
       gopls
@@ -52,8 +47,6 @@ let
       # Hyprland
       pavucontrol
       xdg-utils
-      zip
-      unzip
       grim
       slurp
       wl-clipboard
@@ -82,7 +75,7 @@ let
     ];
 
   terminal_utils = with pkgs; [
-    fish
+    htop
     starship
     binutils
     wget
@@ -99,7 +92,8 @@ let
       tweaks = [ "rimless" ];
     })
     tmux
-    xsel
+    zip
+    unzip
   ];
 
   desktop = with pkgs; [
