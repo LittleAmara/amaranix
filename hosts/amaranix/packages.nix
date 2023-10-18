@@ -97,7 +97,7 @@ let
   ];
 
   desktop = with pkgs; [
-    rofi
+    rofi-wayland-unwrapped
     firefox
     thunderbird
     kitty
