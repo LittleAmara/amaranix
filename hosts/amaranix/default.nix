@@ -48,7 +48,8 @@
     };
   };
 
-  services.xserver.videoDrivers = [ "modesetting" "nvidia"];
+  # services.xserver.videoDrivers = [ "modesetting" "nvidia"];
+  services.xserver.videoDrivers = [ "modesetting" ];
   hardware.opengl.enable = true;
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -99,7 +100,7 @@
     settings = {
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
