@@ -44,6 +44,9 @@ let
       # Lua
       lua-language-server
 
+      # Js
+      nodejs_20
+
       # Hyprland
       pavucontrol
       xdg-utils
@@ -72,6 +75,8 @@ let
       qemu
       virtiofsd
       postgresql
+      kubectl
+      kubectx
     ];
 
   terminal_utils = with pkgs; [
