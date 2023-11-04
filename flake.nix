@@ -7,6 +7,12 @@
       repo = "nixpkgs";
       ref = "nixpkgs-unstable";
     };
+    home-manager = {
+      type = "github";
+      owner = "nix-community";
+      repo = "home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland = {
       type = "github";
       owner = "hyprwm";
@@ -15,7 +21,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -29,5 +35,10 @@
     in
     {
       nixosConfigurations = import ./hosts { inherit inputs lib pkgs system; };
+      homeConfigurations."amara" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [ ./home.nix ];
+      };
     };
 }
