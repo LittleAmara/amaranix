@@ -88,8 +88,6 @@ let
     psmisc
     bat
     fd
-    fzf
-    zoxide
     jq
     (catppuccin-gtk.override {
       accents = [ "lavender" ];
