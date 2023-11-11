@@ -35,10 +35,6 @@
     in
     {
       nixosConfigurations = import ./hosts { inherit inputs lib pkgs system; };
-      homeConfigurations."amara" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        modules = [ ./home.nix ];
-      };
+      homeConfigurations = import ./homes { inherit inputs lib pkgs; };
     };
 }
