@@ -11,10 +11,16 @@
       sshgit = "eval $(ssh-agent) && ssh-add";
       ls = "ls --color=always";
       gcd = "cd $(git rev-parse --show-toplevel)";
+      k = "kubectl";
+      kcx = "kubectx";
+      kns = "kubens";
     };
     sessionVariables = {
       DISABLE_MAGIC_FUNCTIONS = true;
-      SHELL = "${pkgs.zsh}";
+      SHELL = "zsh";
+      MANROFFOPT = "-c";
+      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+      CLICOLOR = 1;
     };
     plugins = [
       {
