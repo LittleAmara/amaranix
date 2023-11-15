@@ -45,6 +45,7 @@
   local magenta='5'
   local cyan='6'
   local white='7'
+  local purple='105'
 
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
@@ -131,7 +132,7 @@
 
     if (( $1 )); then
       # Styling for up-to-date Git status.
-      local branch_color='%6F'
+      local branch_color='%4F'
       local git_status_color='%1F'
       local tag_color='%2F'
       local commit_color='%2F'
@@ -147,7 +148,7 @@
 
     if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
       local branch=${(V)VCS_STATUS_LOCAL_BRANCH}
-      res+="$branch_color${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}${branch//\%/%%} "
+      res+="$branch_color ${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}${branch//\%/%%} "
     fi
 
     if [[ -n $VCS_STATUS_TAG ]]; then
@@ -191,6 +192,19 @@
   typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
   typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
   typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=false
+
+
+  #######################[ nix-shell: activated if in a nix-shell ]#######################
+  typeset -g POWERLEVEL9K_NIX_SHELL_FOREGROUND=$cyan
+
+  # Display the icon of nix_shell if PATH contains a subdirectory of /nix/store.
+  # typeset -g POWERLEVEL9K_NIX_SHELL_INFER_FROM_PATH=false
+
+  # Tip: If you want to see just the icon without "pure" and "impure", uncomment the next line.
+  typeset -g POWERLEVEL9K_NIX_SHELL_CONTENT_EXPANSION="($name)"
+
+  # Custom icon.
+  typeset -g POWERLEVEL9K_NIX_SHELL_VISUAL_IDENTIFIER_EXPANSION='via ❄️'
 
 
   # If p10k is already loaded, reload configuration.
