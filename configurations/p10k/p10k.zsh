@@ -69,7 +69,7 @@
   # Basic style options that define the overall prompt look.
   typeset -g POWERLEVEL9K_BACKGROUND=                               # transparent background
   typeset -g POWERLEVEL9K_{LEFT,RIGHT}_{LEFT,RIGHT}_WHITESPACE=     # no surrounding whitespace
-  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SUBSEGMENT_SEPARATOR=' '     # separate segments with a space
+  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SUBSEGMENT_SEPARATOR=''     # separate segments with a space
   typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SEGMENT_SEPARATOR=           # no end-of-line symbol
   typeset -g POWERLEVEL9K_VISUAL_IDENTIFIER_EXPANSION=              # no segment icons
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=
@@ -91,6 +91,8 @@
   typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$yellow
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
   typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
+  typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='via'
+
 
   # Blue current directory.
   typeset -g POWERLEVEL9K_DIR_FOREGROUND=$blue
@@ -179,14 +181,14 @@
 
   functions -M custom_git_formatter 2>/dev/null
 
-  typeset -g POWERLEVEL9K_VCS_PREFIX="%fon "
+  typeset -g POWERLEVEL9K_VCS_PREFIX=" %fon "
   typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${$((custom_git_formatter(1)))+${custom_git_format}}'
   typeset -g POWERLEVEL9K_VCS_LOADING_CONTENT_EXPANSION='${$((custom_git_formatter(0)))+${custom_git_format}}'
 
   #######################[ background_jobs: presence of background jobs ]#######################
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=false
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=$blue
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='✦'
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='✦ '
 
 
   typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
