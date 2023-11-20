@@ -77,6 +77,21 @@ let
       postgresql
       kubectl
       kubectx
+
+      inetutils
+      ubridge
+      gns3-gui
+      (gns3-server.overrideAttrs (oldAttrs: {
+        postInstall = ''
+          ${oldAttrs.postInstall}
+
+          chmod +x $out/lib/python3.10/site-packages/gns3server/compute/docker/resources
+          chmod +x $out/lib/python3.10/site-packages/gns3server/compute/docker/resources/init.sh
+          chmod +x $out/lib/python3.10/site-packages/gns3server/compute/docker/resources/run-cmd.sh
+          chmod +x $out/lib/python3.10/site-packages/gns3server/compute/docker/resources/bin
+          chmod +x $out/lib/python3.10/site-packages/gns3server/compute/docker/resources/bin/busybox
+        '';
+      }))
     ];
 
   terminal_utils = with pkgs; [
@@ -86,7 +101,6 @@ let
     wget
     tree
     psmisc
-    bat
     fd
     jq
     (catppuccin-gtk.override {
@@ -94,7 +108,6 @@ let
       variant = "frappe";
       tweaks = [ "rimless" ];
     })
-    tmux
     zip
     unzip
   ];

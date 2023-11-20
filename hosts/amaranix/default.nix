@@ -82,7 +82,7 @@
   users.users.amara = {
     isNormalUser = true;
     description = "amara";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "video" "wireshark" ];
   };
 
   # Packages
@@ -125,6 +125,20 @@
 
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
+
+  security.wrappers.ubridge = {
+    source = "/run/current-system/sw/bin/ubridge";
+    capabilities = "cap_net_admin,cap_net_raw=ep";
+    owner = "root";
+    group = "ubridge";
+    permissions = "u+rx,g+rx,o+x";
+  };
+
+  programs.wireshark =
+    {
+      enable = true;
+      package = pkgs.wireshark;
+    };
 
   programs.dconf.enable = true;
   system.autoUpgrade.enable = false;
