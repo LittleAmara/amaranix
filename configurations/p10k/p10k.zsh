@@ -54,7 +54,7 @@
     vcs                       # git status
     virtualenv                # python virtual environment
     nix_shell                 # self explanatory
-    command_execution_time    # previous command duration
+    #command_execution_time    # previous command duration
     # =========================[ Line #2 ]=========================
     newline                   # \n
     background_jobs           # self explanatory
@@ -91,7 +91,7 @@
   typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$yellow
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
   typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
-  typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='via'
+  typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='%f via%3F'
 
 
   # Blue current directory.
@@ -110,6 +110,8 @@
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=0
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT='d h m s'
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$yellow
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PREFIX=' '
+
 
 
   # Disable async loading indicator to make directories that aren't Git repositories
@@ -150,18 +152,18 @@
 
     if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
       local branch=${(V)VCS_STATUS_LOCAL_BRANCH}
-      res+="$branch_color ${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}${branch//\%/%%} "
+      res+="$branch_color ${(g::)POWERLEVEL9K_VCS_BRANCH_ICON}${branch//\%/%%}"
     fi
 
     if [[ -n $VCS_STATUS_TAG ]]; then
       local tag=${(V)VCS_STATUS_TAG}
-      res+="$tag_color(${tag//\%/%%}) "
+      res+="$tag_color(${tag//\%/%%})"
     fi
 
     # Display the current Git commit if there is no branch and no tag.
     # Tip: To always display the current Git commit, delete the next line.
     [[ -z $VCS_STATUS_LOCAL_BRANCH && -z $VCS_STATUS_TAG ]] &&  # <-- this line
-      res+="$commit_color(${VCS_STATUS_COMMIT[1,8]}) "
+      res+="$commit_color(${VCS_STATUS_COMMIT[1,8]})"
 
     local git_status=
 
@@ -174,7 +176,7 @@
     (( VCS_STATUS_COMMITS_BEHIND )) && git_status+="⇣"
     (( VCS_STATUS_COMMITS_AHEAD  )) && git_status+="⇡"
 
-    [[ -n $git_status ]] && res+="$git_status_color""[$git_status]"
+    [[ -n $git_status ]] && res+="$git_status_color"" [$git_status]"
 
     typeset -g custom_git_format=$res
   }
@@ -206,7 +208,7 @@
   typeset -g POWERLEVEL9K_NIX_SHELL_CONTENT_EXPANSION="($name)"
 
   # Custom icon.
-  typeset -g POWERLEVEL9K_NIX_SHELL_VISUAL_IDENTIFIER_EXPANSION='via ❄️'
+  typeset -g POWERLEVEL9K_NIX_SHELL_VISUAL_IDENTIFIER_EXPANSION='%f via%6F ❄️'
 
 
   # If p10k is already loaded, reload configuration.
