@@ -7,6 +7,8 @@ rec {
     ../modules/zsh.nix
     ../modules/tmux.nix
     ../modules/zoxide.nix
+    ../modules/bat.nix
+    ../modules/rofi.nix
   ];
 
   home = {
