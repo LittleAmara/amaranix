@@ -40,7 +40,7 @@ configuration {
     selected:       #7AA2F7FF;
     active:         #ABE9B3FF;
     urgent:         #F28FADFF;
-    font: "FiraCode Nerd Font Mono 8";
+    font: "FiraCode Nerd Font Mono 9";
 }
 
 /*****----- Main Window -----*****/
@@ -246,3 +246,4 @@ element-text {
     vertical-align:              0.5;
     horizontal-align:            0.0;
 }
+/* vim: ft=css */
