@@ -82,8 +82,9 @@
   users.users.amara = {
     isNormalUser = true;
     description = "amara";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "video" "wireshark" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "video" "wireshark" "ubridge" ];
   };
+  users.groups.ubridge = { };
 
   # Packages
   environment = {
@@ -114,8 +115,19 @@
     fira
     fira-code
     font-awesome
+    monaspace.woff
   ];
 
+  fonts.fontconfig.localConf = ''
+    <match target="scan">
+      <test name="family" compare="contains">
+        <string>Monaspace</string>
+      </test>
+      <edit name="spacing">
+        <int>100</int>
+      </edit>
+    </match>
+  '';
   security.pam.services.swaylock =
     {
       text = ''
