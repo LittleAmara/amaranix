@@ -34,13 +34,13 @@
       cat_crust="#232634"
 
       # Status bar
-      set -g status-position "bottom"
+      set -g status-position "top"
       set -g status-style bg=default,fg=default
-      set -g status-justify centre
-      set -g status-left "#[bg=default,fg=default,bold]  #{?client_prefix,,#S}#[bg=$cat_blue,fg=black,bold]#{?client_prefix,#S,}#[bg=default,fg=default,bold]  "
-      set -g status-right "#{user}  "
+      set -g status-justify left
+      set -g status-left "  "
+      set -g status-right "#[bg=default,fg=default,bold]#{?client_prefix,,#S}#[bg=$cat_blue,fg=black,bold]#{?client_prefix,#S,}#[bg=default,fg=default,bold]  "
       set -g window-status-format " #I:#W "
-      set -g window-status-current-format "#[bg=$cat_blue,fg=black] #I:#W "
+      set -g window-status-current-format "#[bg=$cat_blue,fg=black,bold] #I:#W "
       set -g status-left-length '100'
       set -g status-right-length '100'
 
@@ -53,7 +53,7 @@
       unbind %
       bind | split-window -h
       unbind '"'
-      bind - split-window -v
+      bind _ split-window -v
 
       # Keybindings
       bind -n M-Enter new-window
