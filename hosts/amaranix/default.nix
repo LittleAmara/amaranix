@@ -152,6 +152,14 @@
       package = pkgs.wireshark;
     };
 
+  # To remove when hyprland will support nixos 24.05
+  xdg.portal.config.common.default = "*";
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
+
+
   programs.dconf.enable = true;
   system.autoUpgrade.enable = false;
   system.stateVersion = "22.05";
