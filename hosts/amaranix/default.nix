@@ -17,6 +17,7 @@
     };
   };
 
+  # Networking
   networking = {
     hostName = "amara"; # Define your hostname.
     networkmanager.enable = true;
@@ -69,13 +70,10 @@
 
   # Enable sound with pipewire.
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -86,27 +84,74 @@
   };
   users.groups.ubridge = { };
 
-  # Packages
+  # Environment
   environment = {
     systemPackages = import ./packages.nix { inherit pkgs; };
     etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
     pathsToLink = [ "/share" ]; # needed by postgresql
   };
-  nixpkgs.config.allowUnfree = true;
-  programs.fish.enable = true; # enable fish with completion
 
   # Nix configuration
   nix = {
     package = pkgs.nixVersions.nix_2_15;
     settings = {
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      substituters = [
+        "https://hyprland.cachix.org"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
-    nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
+    nixPath = [
+      "nixpkgs=/etc/channels/nixpkgs"
+      "nixos-config=/etc/nixos/configuration.nix"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
   };
-  programs.command-not-found.enable = false;
+
+  # Virtualisation
+  virtualisation.libvirtd.enable = true;
+  virtualisation.docker.enable = true;
+
+  # Security
+  security = {
+    wrappers.ubridge = {
+      source = "/run/current-system/sw/bin/ubridge";
+      capabilities = "cap_net_admin,cap_net_raw=ep";
+      owner = "root";
+      group = "ubridge";
+      permissions = "u+rx,g+rx,o+x";
+    };
+    pam.services.swaylock =
+      {
+        text = ''
+          auth include login
+        '';
+      };
+  };
+
+  programs = {
+    command-not-found.enable = false;
+    wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
+    dconf.enable = true;
+  };
+
+  # To remove when hyprland will support nixos 24.05
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
+  xdg.portal.config.common.default = "*";
+
+  # Misc
+  services.logind.powerKey = "ignore";
 
   # Fonts
   fonts.packages = with pkgs; [
@@ -115,52 +160,7 @@
     fira
     fira-code
     font-awesome
-    monaspace.woff
   ];
-
-  fonts.fontconfig.localConf = ''
-    <match target="scan">
-      <test name="family" compare="contains">
-        <string>Monaspace</string>
-      </test>
-      <edit name="spacing">
-        <int>100</int>
-      </edit>
-    </match>
-  '';
-  security.pam.services.swaylock =
-    {
-      text = ''
-        auth include login
-      '';
-    };
-
-  virtualisation.libvirtd.enable = true;
-  virtualisation.docker.enable = true;
-
-  security.wrappers.ubridge = {
-    source = "/run/current-system/sw/bin/ubridge";
-    capabilities = "cap_net_admin,cap_net_raw=ep";
-    owner = "root";
-    group = "ubridge";
-    permissions = "u+rx,g+rx,o+x";
-  };
-
-  programs.wireshark =
-    {
-      enable = true;
-      package = pkgs.wireshark;
-    };
-
-  # To remove when hyprland will support nixos 24.05
-  xdg.portal.config.common.default = "*";
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  };
-
-
-  programs.dconf.enable = true;
   system.autoUpgrade.enable = false;
   system.stateVersion = "22.05";
 }
