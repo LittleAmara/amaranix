@@ -4,6 +4,7 @@ lib.nixosSystem {
   specialArgs = { inherit inputs system pkgs; };
 
   modules = [
-    ./amaranix
+    ./configuration.nix
+    ./hardware-configuration.nix
   ];
 }

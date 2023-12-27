@@ -1,4 +1,4 @@
 { inputs, lib, pkgs, system, ... }:
 {
-  amaranix = import ./amara-laptop.nix { inherit inputs system lib pkgs; };
+  lapis-lazuli = import ./lapis-lazuli { inherit inputs system lib pkgs; };
 }

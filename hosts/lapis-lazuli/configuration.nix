@@ -1,12 +1,6 @@
 { inputs, config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
   # Bootloader
   boot = {
     initrd.secrets = { "/crypto_keyfile.bin" = null; }; # Setup keyfile
@@ -19,7 +13,7 @@
 
   # Networking
   networking = {
-    hostName = "amara"; # Define your hostname.
+    hostName = "lapis-lazuli";
     networkmanager.enable = true;
   };
 
