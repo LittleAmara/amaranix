@@ -1,16 +1,24 @@
 { config, pkgs, lib, ... }:
+let
 
+  mkImports = (modules:
+    builtins.map
+      (name: ./.. + "/modules/${name}.nix")
+      modules);
+
+in
 rec {
 
-  imports = [
-    ../modules/themes.nix
-    ../modules/fzf.nix
-    ../modules/zsh.nix
-    ../modules/tmux.nix
-    ../modules/zoxide.nix
-    ../modules/bat.nix
-    ../modules/rofi.nix
-    ../modules/gtk.nix
+  imports = mkImports [
+    "themes"
+    "fzf"
+    "zsh"
+    "fzf"
+    "tmux"
+    "zoxide"
+    "bat"
+    "rofi"
+    "gtk"
   ];
 
   home = {

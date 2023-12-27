@@ -6,5 +6,5 @@ let
     };
 in
 {
-  lapis-lazuli = mkHome [ ./lapis-lazuli.nix ];
+  amara = mkHome [ ./amara.nix ];
 }
