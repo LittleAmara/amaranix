@@ -86,7 +86,12 @@
 
   # Environment
   environment = {
-    systemPackages = import ./packages.nix { inherit pkgs; };
+    #systemPackages = import ./packages.nix { inherit pkgs; };
+    systemPackages = with pkgs; [
+      git
+      vim
+      curl
+    ];
     etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
     pathsToLink = [ "/share" ]; # needed by postgresql
   };
