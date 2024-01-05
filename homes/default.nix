@@ -2,6 +2,9 @@
 let
   mkHome = modules:
     inputs.home-manager.lib.homeManagerConfiguration {
+      extraSpecialArgs = {
+        inherit (inputs) hyprland;
+      };
       inherit pkgs modules;
     };
 in
