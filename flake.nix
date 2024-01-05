@@ -18,10 +18,15 @@
       owner = "hyprwm";
       repo = "Hyprland";
       ref = "main";
+    neovim-nightly = {
+      type = "github";
+      owner = "nix-community";
+      repo = "neovim-nightly-overlay";
+      ref = "master";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, neovim-nightly, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -30,7 +35,7 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = import ./overlays;
+        overlays = import ./overlays ++ [ inputs.neovim-nightly.overlay ];
       };
     in
     {
