@@ -19,5 +19,17 @@
       name = "Colloid-dark";
       package = pkgs.colloid-icon-theme;
     };
+    gtk3.extraCss = ''
+      .window-frame {
+          box-shadow: none;
+          margin: 0;
+      }
+    '';
+    gtk4.extraCss = ''
+      .window-frame {
+          box-shadow: none;
+          margin: 0;
+      }
+    '';
   };
 }
