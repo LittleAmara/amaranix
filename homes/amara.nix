@@ -35,7 +35,7 @@ rec {
 
   home.packages = with pkgs;[
     # Editor
-    neovim
+    neovim-nightly
     tree-sitter
     ripgrep # Mandatory if i want to use live_grep of telescope (nvim)
 
