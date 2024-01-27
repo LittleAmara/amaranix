@@ -4,6 +4,5 @@ let
   }));
 in
 [
-  #(import ./sf-mono.nix)
   (mkOverlay "sf-mono" ./sf-mono.nix)
 ]
