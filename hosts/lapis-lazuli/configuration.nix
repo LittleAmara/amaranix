@@ -46,7 +46,6 @@
     };
   };
 
-  # services.xserver.videoDrivers = [ "modesetting" "nvidia"];
   services.xserver.videoDrivers = [ "modesetting" ];
   hardware.opengl.enable = true;
   hardware.nvidia = {
@@ -83,7 +82,6 @@
 
   # Environment
   environment = {
-    #systemPackages = import ./packages.nix { inherit pkgs; };
     systemPackages = with pkgs; [
       git
       vim
@@ -136,6 +134,14 @@
       };
   };
 
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
+
+  # Misc
+  services.logind.powerKey = "ignore";
   programs = {
     command-not-found.enable = false;
     wireshark = {
@@ -144,16 +150,6 @@
     };
     dconf.enable = true;
   };
-
-  # To remove when hyprland will support nixos 24.05
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  };
-  xdg.portal.config.common.default = "*";
-
-  # Misc
-  services.logind.powerKey = "ignore";
 
   # Fonts
   fonts.packages = with pkgs; [
