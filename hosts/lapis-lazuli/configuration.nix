@@ -11,6 +11,9 @@
     };
   };
 
+  # Linux kernel
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
+
   # Networking
   networking = {
     hostName = "lapis-lazuli";
