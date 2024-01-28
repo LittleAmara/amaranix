@@ -7,6 +7,7 @@
     enableCompletion = true;
     oh-my-zsh = {
       enable = true;
+      plugins = [ "gitfast" ];
     };
     shellAliases = {
       vim = "nvim";
