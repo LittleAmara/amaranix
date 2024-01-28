@@ -20,7 +20,6 @@
     };
     sessionVariables = {
       DISABLE_MAGIC_FUNCTIONS = true;
-      SHELL = "zsh";
       MANROFFOPT = "-c";
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
       CLICOLOR = 1;
