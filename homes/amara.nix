@@ -90,8 +90,8 @@ rec {
     dunst
     swww
     wofi
-    pipewire
-    wireplumber
+    # pipewire
+    # wireplumber
     brightnessctl
     swaylock
     (waybar.overrideAttrs

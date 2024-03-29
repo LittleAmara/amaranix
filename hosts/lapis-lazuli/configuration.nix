@@ -68,11 +68,11 @@
 
   # Enable sound with pipewire.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
+  hardware.pulseaudio = {
     enable = true;
+    package = pkgs.pulseaudioFull;
   };
+  security.rtkit.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.amara = {
