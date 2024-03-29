@@ -56,9 +56,11 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-    xkbOptions = "terminate:ctrl_alt_bksp,compose:ralt";
+    xkb = {
+      layout = "us";
+      variant = "";
+      options = "terminate:ctrl_alt_bksp,compose:ralt";
+    };
   };
 
   # Enable CUPS to print documents.
