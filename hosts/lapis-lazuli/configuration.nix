@@ -93,7 +93,6 @@
 
   # Nix configuration
   nix = {
-    package = pkgs.nixVersions.nix_2_15;
     settings = {
       substituters = [
         "https://hyprland.cachix.org"
