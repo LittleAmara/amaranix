@@ -67,9 +67,9 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio = {
-    enable = true;
+    enable = false;
     package = pkgs.pulseaudioFull;
   };
   security.rtkit.enable = true;
@@ -139,6 +139,12 @@
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
+  services.pipewire = {
+    enable = true;
+    audio.enable = true;
+    wireplumber.enable = false;
+    pulse.enable = true;
   };
 
   # Misc

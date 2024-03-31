@@ -92,6 +92,7 @@ rec {
     wofi
     # pipewire
     # wireplumber
+    pulseaudioFull
     brightnessctl
     swaylock
     (waybar.overrideAttrs
