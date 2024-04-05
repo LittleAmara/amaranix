@@ -69,7 +69,7 @@
   # Enable sound with pipewire.
   # sound.enable = true;
   hardware.pulseaudio = {
-    enable = false;
+    enable = true;
     package = pkgs.pulseaudioFull;
   };
   security.rtkit.enable = true;
@@ -142,9 +142,10 @@
   };
   services.pipewire = {
     enable = true;
-    audio.enable = true;
-    wireplumber.enable = false;
-    pulse.enable = true;
+    audio.enable = false;
+    wireplumber.enable = true;
+    pulse.enable = false;
+    jack.enable = false;
   };
 
   # Misc
