@@ -17,7 +17,7 @@
       type = "github";
       owner = "hyprwm";
       repo = "Hyprland";
-      ref = "v0.37.1";
+      ref = "v0.38.1";
     };
     neovim-nightly = {
       type = "github";
