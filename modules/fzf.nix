@@ -16,7 +16,7 @@ in
       "-m"
       "--ansi"
       ''--bind="ctrl-space:toggle-preview"''
-      "--preview='bat --color=always {}'"
+      "--preview='bat --plain --color=always {}'"
       "--preview-window=:hidden"
     ];
     colors = {
