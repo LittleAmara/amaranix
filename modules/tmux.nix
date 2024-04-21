@@ -37,8 +37,8 @@
       set -g status-position "bottom"
       set -g status-style bg=default,fg=default
       set -g status-justify right
-      set -g status-right "  "
-      set -g status-left "#[bg=default,fg=default,bold]#{?client_prefix,,#S}#[bg=$cat_blue,fg=black,bold]#{?client_prefix,#S,}#[bg=default,fg=default,bold]  "
+      set -g status-right " "
+      set -g status-left " #[bg=default,fg=default,bold]#{?client_prefix,,#S}#[bg=$cat_blue,fg=black,bold]#{?client_prefix,#S,}#[bg=default,fg=default,bold]  "
       set -g window-status-format " #I:#W "
       set -g window-status-current-format "#[bg=$cat_blue,fg=black,bold] #I:#W "
       set -g status-left-length '100'
