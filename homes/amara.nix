@@ -89,10 +89,7 @@ rec {
     catppuccin-cursors
     dunst
     swww
-    wofi
-    # pipewire
-    # wireplumber
-    pulseaudioFull
+    hyprpaper
     brightnessctl
     swaylock
     (waybar.overrideAttrs
