@@ -25,6 +25,7 @@
       CLICOLOR = 1;
       NODE_PATH = "~/.npm-packages/lib/node_modules";
       EDITOR = "nvim";
+      UV_USE_IO_URING = 0; # see https://github.com/neovim/neovim/issues/28149
     };
     plugins = [
       {
