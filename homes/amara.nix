@@ -61,7 +61,7 @@ rec {
     go
     gopls
 
-    #Nix
+    # Nix
     nixpkgs-fmt
     nil
 
@@ -72,55 +72,19 @@ rec {
     lua-language-server
 
     # Js
-    nodejs_20
+    nodejs
 
-    # font
-    sf-mono
+    # Java
+    # maven
+    # jetbrains.idea-ultimate
+    # jetbrains.jdk
 
-    playerctl
-    xwaylandvideobridge
-    chromium
-    pavucontrol
-    xdg-utils
-    grim
-    slurp
-    wl-clipboard
-    networkmanagerapplet
-    catppuccin-cursors
-    dunst
-    swww
-    hyprpaper
-    brightnessctl
-    swaylock
-    (waybar.overrideAttrs
-      (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      }))
-
-    # Others
-    docker-compose
-    pre-commit
-    virt-manager
-    qemu
-    virtiofsd
-    postgresql
+    # Kubernetes
     kubectl
     kubectx
 
-    inetutils
-    ubridge
-    gns3-gui
-    (gns3-server.overrideAttrs (oldAttrs: {
-      postInstall = ''
-        ${oldAttrs.postInstall}
-
-        chmod +x $out/lib/python3.11/site-packages/gns3server/compute/docker/resources
-        chmod +x $out/lib/python3.11/site-packages/gns3server/compute/docker/resources/init.sh
-        chmod +x $out/lib/python3.11/site-packages/gns3server/compute/docker/resources/run-cmd.sh
-        chmod +x $out/lib/python3.11/site-packages/gns3server/compute/docker/resources/bin
-        chmod +x $out/lib/python3.11/site-packages/gns3server/compute/docker/resources/bin/busybox
-      '';
-    }))
+    # Terminal and terminal utils
+    kitty
     htop
     binutils
     wget
@@ -128,22 +92,74 @@ rec {
     psmisc
     fd
     jq
+    zip
+    unzip
+
+    # Font
+    sf-mono
+
+    # Audio and Music
+    playerctl
+    spotify
+    pavucontrol
+
+    # Browser
+    chromium
+
+    # Wayland utils
+    xwaylandvideobridge
+    xdg-utils
+    grim
+    slurp
+    wl-clipboard
+    networkmanagerapplet
+    dunst
+    swww
+    hyprpaper
+    brightnessctl
+    swaylock
+    waybar
+
+    # Social
+    thunderbird
+    slack
+    discord
+
+    # Themes
     (catppuccin-gtk.override {
       accents = [ "lavender" ];
       variant = "frappe";
       tweaks = [ "rimless" ];
     })
-    zip
-    unzip
-    thunderbird
-    kitty
-    slack
-    discord
-    spotify
-    zathura
+    catppuccin-cursors
+
+
+    # Miscellaneous
+    fswatch
+    ansible
+    docker-compose
+    pre-commit
+    virt-manager
+    qemu
+    virtiofsd
+    postgresql
+    inetutils
+    ubridge
+    # gns3-gui
+    # (gns3-server.overrideAttrs (oldAttrs: {
+    #   postInstall = ''
+    #     ${oldAttrs.postInstall}
+
+    #     chmod +x $out/lib/python3.11/site-packages/gns3server/compute/docker/resources
+    #     chmod +x $out/lib/python3.11/site-packages/gns3server/compute/docker/resources/init.sh
+    #     chmod +x $out/lib/python3.11/site-packages/gns3server/compute/docker/resources/run-cmd.sh
+    #     chmod +x $out/lib/python3.11/site-packages/gns3server/compute/docker/resources/bin
+    #     chmod +x $out/lib/python3.11/site-packages/gns3server/compute/docker/resources/bin/busybox
+    #   '';
+    # }))
   ];
 
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
