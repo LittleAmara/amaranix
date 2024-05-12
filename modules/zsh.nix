@@ -26,7 +26,11 @@
       NODE_PATH = "~/.npm-packages/lib/node_modules";
       EDITOR = "nvim";
       UV_USE_IO_URING = 0; # see https://github.com/neovim/neovim/issues/28149
+      GOPATH = "/home/amara/.go";
     };
+    initExtra = ''
+      path+=("$GOPATH"/bin)
+    '';
     plugins = [
       {
         name = "powerlevel10k";
