@@ -83,6 +83,7 @@
 
       # General options
       set -g pane-active-border-style fg=$cat_flamingo
+      set -g renumber-windows on
     '';
   };
 }
