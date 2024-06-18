@@ -54,6 +54,8 @@
       bind | split-window -h
       unbind '"'
       bind _ split-window -v
+      bind v split-window -h
+      bind s split-window -v
 
       # Keybindings
       bind -n M-Enter new-window
