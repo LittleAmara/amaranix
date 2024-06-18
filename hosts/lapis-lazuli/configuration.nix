@@ -121,8 +121,10 @@
   };
 
   # Virtualisation
-  virtualisation.libvirtd.enable = true;
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    libvirtd.enable = true;
+    docker.enable = true;
+  };
 
   # Security
   security = {
