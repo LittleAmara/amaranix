@@ -14,10 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      type = "github";
-      owner = "hyprwm";
-      repo = "Hyprland";
-      ref = "v0.38.1";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     };
     neovim-nightly = {
       type = "github";
