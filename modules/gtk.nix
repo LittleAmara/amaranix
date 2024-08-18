@@ -4,32 +4,32 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Frappe-Standard-Peach-Dark";
+      name = "catppuccin-mocha-peach-standard";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "peach" ];
-        variant = "frappe";
-        tweaks = [ "rimless" ];
+        variant = "mocha";
+        tweaks = [ ];
       };
     };
     cursorTheme = {
-      name = "Catppuccin-Frappe-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.frappeDark;
+      name = "Catppuccin-Mocha-Dark-Cursors";
+      package = pkgs.catppuccin-cursors.mochaDark;
     };
     iconTheme = {
       name = "Colloid-dark";
       package = pkgs.colloid-icon-theme;
     };
-    gtk3.extraCss = ''
-      .window-frame {
-          box-shadow: none;
-          margin: 0;
-      }
-    '';
-    gtk4.extraCss = ''
-      .window-frame {
-          box-shadow: none;
-          margin: 0;
-      }
-    '';
+    # gtk3.extraCss = ''
+    #   .window-frame {
+    #       box-shadow: none;
+    #       margin: 0;
+    #   }
+    # '';
+    # gtk4.extraCss = ''
+    #   .window-frame {
+    #       box-shadow: none;
+    #       margin: 0;
+    #   }
+    # '';
   };
 }

@@ -133,8 +133,11 @@ rec {
 
 
     # Miscellaneous
+    xdg-utils
+    networkmanagerapplet
     nitrogen
     betterlockscreen
+    dunst
     brightnessctl
     fswatch
     ansible
