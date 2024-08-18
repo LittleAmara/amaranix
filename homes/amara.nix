@@ -28,11 +28,6 @@ rec {
 
   fonts.fontconfig.enable = true;
 
-  home.file = {
-    ".config/appolox/toto".source = pkgs.emptyFile;
-  };
-
-
   home.packages = with pkgs;[
     # Editor
     neovim
@@ -73,8 +68,10 @@ rec {
 
     # Js
     nodejs
+    nodePackages_latest.typescript-language-server
 
     # Java
+    # jetbrains-toolbox
     # maven
     # jetbrains.idea-ultimate
     # jetbrains.jdk
@@ -105,20 +102,21 @@ rec {
 
     # Browser
     chromium
+    google-chrome
 
     # Wayland utils
-    xwaylandvideobridge
-    xdg-utils
-    grim
-    slurp
-    wl-clipboard
-    networkmanagerapplet
-    dunst
-    swww
-    hyprpaper
-    brightnessctl
-    swaylock
-    waybar
+    # xwaylandvideobridge
+    # xdg-utils
+    # grim
+    # slurp
+    # wl-clipboard
+    # networkmanagerapplet
+    # dunst
+    # swww
+    # hyprpaper
+    # brightnessctl
+    # swaylock
+    # waybar
 
     # Social
     thunderbird
@@ -135,6 +133,9 @@ rec {
 
 
     # Miscellaneous
+    nitrogen
+    betterlockscreen
+    brightnessctl
     fswatch
     ansible
     docker-compose
@@ -145,6 +146,7 @@ rec {
     postgresql
     inetutils
     ubridge
+    postman
     # gns3-gui
     # (gns3-server.overrideAttrs (oldAttrs: {
     #   postInstall = ''
