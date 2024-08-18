@@ -57,7 +57,6 @@
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
-    nvidiaSettings = true;
   };
 
   # Configure keymap in X11
@@ -96,7 +95,7 @@
       curl
     ];
     etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
-    pathsToLink = [ "/share" ]; # needed by postgresql
+    pathsToLink = [ "/share" "/libexec" ]; # needed by postgresql|I3
   };
 
   # Nix configuration
@@ -144,16 +143,33 @@
   };
 
   # Hyprland
-  programs.hyprland = {
+  # programs.hyprland = {
+  #   enable = true;
+  #   package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  # };
+  # services.pipewire = {
+  #   enable = true;
+  #   audio.enable = false;
+  #   wireplumber.enable = true;
+  #   pulse.enable = false;
+  #   jack.enable = false;
+  # };
+
+  # I3
+  services.xserver = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  };
-  services.pipewire = {
-    enable = true;
-    audio.enable = false;
-    wireplumber.enable = true;
-    pulse.enable = false;
-    jack.enable = false;
+    desktopManager = {
+      xterm.enable = false;
+    };
+
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu
+        i3status
+        i3lock
+      ];
+    };
   };
 
   # Misc
