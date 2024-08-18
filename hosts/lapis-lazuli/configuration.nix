@@ -161,6 +161,13 @@
     desktopManager = {
       xterm.enable = false;
     };
+    displayManager = {
+      defaultSession = "none+i3";
+      autoLogin = {
+        enable = true;
+        user = "amara";
+      };
+    };
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
