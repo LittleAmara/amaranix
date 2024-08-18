@@ -161,7 +161,6 @@
     desktopManager = {
       xterm.enable = false;
     };
-
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
@@ -171,6 +170,7 @@
       ];
     };
   };
+  services.libinput.touchpad.naturalScrolling = true;
 
   # Misc
   services.logind.powerKey = "ignore";
