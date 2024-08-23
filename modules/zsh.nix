@@ -17,6 +17,9 @@
       k = "kubectl";
       kcx = "kubectx";
       kns = "kubens";
+      blueon = "bluetoothctl power on";
+      blueoff = "bluetoothctl power off";
+      bluecon = ''bluetoothctl connect "$(bluetoothctl devices | cut -d ' ' -f2- | fzf | cut -d ' ' -f1)"'';
     };
     sessionVariables = {
       DISABLE_MAGIC_FUNCTIONS = true;
