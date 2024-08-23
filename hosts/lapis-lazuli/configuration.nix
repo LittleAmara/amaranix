@@ -53,7 +53,7 @@
   };
 
   services.xserver.videoDrivers = [ "modesetting" ];
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
@@ -155,18 +155,11 @@
   #   jack.enable = false;
   # };
 
-  # I3
+  # Xorg I3
   services.xserver = {
     enable = true;
     desktopManager = {
       xterm.enable = false;
-    };
-    displayManager = {
-      defaultSession = "none+i3";
-      autoLogin = {
-        enable = true;
-        user = "amara";
-      };
     };
     windowManager.i3 = {
       enable = true;
@@ -175,6 +168,16 @@
         i3status
         i3lock
       ];
+    };
+    deviceSection = ''
+      Option "TearFree" "true"
+    '';
+  };
+  services.displayManager = {
+    defaultSession = "none+i3";
+    autoLogin = {
+      enable = true;
+      user = "amara";
     };
   };
   services.libinput.touchpad.naturalScrolling = true;
