@@ -73,6 +73,7 @@
 
   # Enable sound with pipewire.
   # sound.enable = true;
+  services.pipewire.enable = false;
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
@@ -94,12 +95,13 @@
       vim
       curl
     ];
-    etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
+    etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
     pathsToLink = [ "/share" "/libexec" ]; # needed by postgresql|I3
   };
 
   # Nix configuration
   nix = {
+    package = pkgs.nixVersions.nix_2_22;
     settings = {
       substituters = [
         "https://hyprland.cachix.org"
@@ -109,14 +111,11 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = [ "nix-command" "flakes" ];
     };
     registry.nixpkgs.flake = inputs.nixpkgs;
-    nixPath = [
-      "nixpkgs=/etc/channels/nixpkgs"
-      "nixos-config=/etc/nixos/configuration.nix"
-      "/nix/var/nix/profiles/per-user/root/channels"
-    ];
+    channel.enable = false;
+    settings.nix-path = pkgs.lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
   };
 
   # Virtualisation
